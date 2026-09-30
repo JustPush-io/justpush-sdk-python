@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "justpush"
+dynamic = ["version"]
+description = "Official Python SDK for JustPush: send push notifications to your iOS and Android devices."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "JustPush.io", email = "info@justpush.io" }]
+requires-python = ">=3.10"
+dependencies = ["aiohttp>=3.9"]
+keywords = ["justpush", "push notifications", "notifications", "api", "sdk"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://justpush.io"
+Documentation = "https://docs.justpush.io"
+Source = "https://github.com/JustPush-io/justpush-sdk-python"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "mypy>=1.10", "ruff>=0.5"]
+
+[tool.hatch.version]
+path = "src/justpush/_core.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/justpush"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+strict = true
+files = ["src/justpush"]
