@@ -31,7 +31,7 @@ from .models import (
 DEFAULT_BASE_URL = "https://api.justpush.io"
 DEFAULT_TIMEOUT = 10.0
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 USER_AGENT = f"justpush-python/{__version__}"
 
 
@@ -140,6 +140,16 @@ def topic_payload(
     elif avatar_image:
         body["avatar"] = {"body": base64.b64encode(avatar_image).decode("ascii")}
     return body
+
+
+def verify_token_path() -> str:
+    """A message path that can't exist, so the API answers 404 for a valid token and 401 otherwise.
+
+    There is no account endpoint, and this uses no quota.
+    """
+    import secrets
+
+    return "/messages/verify-" + secrets.token_hex(16)
 
 
 def check_path_part(value: str, name: str) -> str:

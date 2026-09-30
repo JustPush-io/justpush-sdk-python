@@ -76,6 +76,14 @@ details = client.get_message(result.key)
 print(details.is_acknowledged, details.processed_at)
 ```
 
+### Check a token
+
+```python
+client.verify_token()   # raises JustPushAuthenticationError if the token is invalid
+```
+
+This sends nothing and uses no quota, so it's safe for setup screens.
+
 ## Async
 
 ```python

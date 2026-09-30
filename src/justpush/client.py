@@ -9,7 +9,7 @@ from collections.abc import Iterable, Mapping
 from typing import Any
 
 from . import _core
-from .exceptions import JustPushConnectionError
+from .exceptions import JustPushConnectionError, JustPushNotFoundError
 from .models import (
     Acknowledgement,
     Button,
@@ -86,6 +86,17 @@ class JustPush:
         path = "/messages/" + _core.check_path_part(key, "key")
         data, _ = self._request("GET", path)
         return MessageDetails.from_api(_core.as_mapping(data))
+
+    def verify_token(self) -> None:
+        """Check that the token is valid without sending anything or using quota.
+
+        Raises :class:`JustPushAuthenticationError` for an invalid token and
+        :class:`JustPushConnectionError` when the API can't be reached.
+        """
+        try:
+            self._request("GET", _core.verify_token_path())
+        except JustPushNotFoundError:
+            return
 
     def create_topic(
         self,

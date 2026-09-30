@@ -190,3 +190,28 @@ def test_async_connection_errors(api):
     for coro in (unreachable, slow):
         with pytest.raises(JustPushConnectionError):
             asyncio.run(coro())
+
+
+# --- verify_token -------------------------------------------------------------------------------
+
+def test_verify_token(api):
+    api.respond(404, {"error": {"type": "not_found", "message": "Message not found"}})
+    JustPush("tok", base_url=api.url).verify_token()
+    assert api.last["method"] == "GET"
+    assert api.last["path"].startswith("/messages/verify-")
+
+    api.respond(401, {"error": {"type": "unauthorized", "message": "Unauthenticated"}})
+    with pytest.raises(JustPushAuthenticationError):
+        JustPush("tok", base_url=api.url).verify_token()
+
+
+def test_async_verify_token(api):
+    async def run():
+        async with AsyncJustPush("tok", base_url=api.url) as client:
+            await client.verify_token()
+
+    api.respond(404, {"error": {"type": "not_found", "message": "Message not found"}})
+    asyncio.run(run())
+    api.respond(401, {"error": {"type": "unauthorized", "message": "Unauthenticated"}})
+    with pytest.raises(JustPushAuthenticationError):
+        asyncio.run(run())
