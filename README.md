@@ -133,6 +133,34 @@ python3 -m venv .venv && .venv/bin/pip install -e '.[dev]'
 .venv/bin/ruff check . && .venv/bin/mypy
 ```
 
+<!-- justpush-packages:start -->
+## JustPush products
+
+**Apps**
+- [JustPush for iOS](https://apps.apple.com/us/app/justpush-io/id6738397112)
+- [JustPush for Android](https://play.google.com/store/apps/details?id=com.justpush)
+- [JustPush Studio](https://studio.justpush.io): build integrations that turn webhooks into notifications
+- [Recipes](https://justpush.io/recipes): ready-made integrations for Shopify, Magento and more
+- [Playground](https://playground.justpush.io): try the API in your browser
+
+**SDKs**
+- [PHP](https://github.com/JustPush-io/justpush-sdk-php) · [Packagist](https://packagist.org/packages/justpush/justpush-php-sdk)
+- [JavaScript](https://github.com/JustPush-io/justpush-sdk-js) · [npm](https://www.npmjs.com/package/@justpush.io/justpush-js-sdk)
+- [TypeScript](https://github.com/JustPush-io/justpush-sdk-ts) · [npm](https://www.npmjs.com/package/@justpush.io/justpush-ts-sdk)
+- [Python](https://github.com/JustPush-io/justpush-sdk-python) · [PyPI](https://pypi.org/project/justpush/) (this one)
+- [Go](https://github.com/JustPush-io/justpush-go-sdk) · [pkg.go.dev](https://pkg.go.dev/github.com/JustPush-io/justpush-go-sdk)
+
+**Packages**
+- [Laravel notification channel](https://github.com/JustPush-io/justpush-laravel-notifications) · [Packagist](https://packagist.org/packages/justpush/laravel-notification-channel)
+- [Magento 2](https://github.com/JustPush-io/justpush-magento) · [Packagist](https://packagist.org/packages/justpush/magento-module-notify)
+- [PrestaShop](https://github.com/JustPush-io/justpush-prestashop) · [Download](https://github.com/JustPush-io/justpush-prestashop/releases/latest)
+
+**Developer tools**
+- [API reference](https://docs.justpush.io/introduction/dev-tools/api-reference) · [OpenAPI](https://docs.justpush.io/introduction/dev-tools/openapi)
+- [Postman collection](https://github.com/JustPush-io/postman) · [Paw collection](https://github.com/JustPush-io/paw)
+- [MCP server for Claude](https://docs.justpush.io/introduction/dev-tools/mcp-server)
+<!-- justpush-packages:end -->
+
 ## Changelog
 
 See [CHANGELOG.md](./CHANGELOG.md).
