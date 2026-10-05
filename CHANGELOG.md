@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Version bump for the first PyPI release.
+
 ## 0.2.0 (unreleased)
 
 - `verify_token()` on both clients: checks a token without sending anything or using quota.

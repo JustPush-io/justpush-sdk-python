@@ -31,7 +31,7 @@ from .models import (
 DEFAULT_BASE_URL = "https://api.justpush.io"
 DEFAULT_TIMEOUT = 10.0
 
-__version__ = "0.2.0"
+__version__ = "1.0.1"
 USER_AGENT = f"justpush-python/{__version__}"
 
 
